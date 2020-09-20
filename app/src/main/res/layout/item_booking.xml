@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_16"
+    android:layout_marginBottom="@dimen/dp_16">
+
+    <ImageView
+        android:id="@+id/imageHotelItem"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_64"
+        android:layout_marginTop="@dimen/dp_16"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_destination"
+        app:layout_constraintDimensionRatio="h,2:3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewHotelNameItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        android:textSize="@dimen/sp_20"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageHotelItem"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPriceHotel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:gravity="center"
+        android:text="$5 - $30"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        app:layout_constraintEnd_toEndOf="@+id/imageHotelItem"
+        app:layout_constraintStart_toStartOf="@+id/imageHotelItem"
+        app:layout_constraintTop_toBottomOf="@+id/imageHotelItem" />
+
+    <TextView
+        android:id="@+id/textViewAddressHotel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textViewHotelNameItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHotelNameItem" />
+
+    <TextView
+        android:id="@+id/textViewAdult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="@string/title_number_adult"
+        app:layout_constraintStart_toStartOf="@+id/textViewHotelNameItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddressHotel" />
+
+    <TextView
+        android:id="@+id/textViewChildren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="@string/title_number_children"
+        app:layout_constraintStart_toStartOf="@+id/textViewHotelNameItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAdult" />
+
+
+    <TextView
+        android:id="@+id/textViewCheckin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="@string/title_check_in_date"
+        app:layout_constraintStart_toStartOf="@+id/textViewHotelNameItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewChildren" />
+
+    <TextView
+        android:id="@+id/textViewCheckout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="@string/title_check_out_date"
+        app:layout_constraintStart_toStartOf="@+id/textViewHotelNameItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCheckin" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonApply"
+        style="@style/Widget.TravelApp.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/title_button_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonCancel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCheckout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/title_button_cancel"
+        app:layout_constraintEnd_toStartOf="@+id/buttonApply"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCheckout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

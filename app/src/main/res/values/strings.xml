@@ -77,4 +77,8 @@
     <string name="title_seat">Seat: %d</string>
     <string name="title_arrival_date">Arrival: %s</string>
     <string name="title_favorite_location">My favourite location</string>
+    <string name="title_check_in_date">Check-in date: %s </string>
+    <string name="title_check_out_date">Check-out date: %s </string>
+    <string name="title_number_adult">Adult: %d</string>
+    <string name="title_number_children">Children: %d</string>
 </resources>

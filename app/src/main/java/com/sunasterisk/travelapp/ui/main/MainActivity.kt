@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationView
 import com.sunasterisk.travelapp.R
+import com.sunasterisk.travelapp.ui.MyBooking.MyBookingFragment
 import com.sunasterisk.travelapp.ui.base.BaseActivity
-import com.sunasterisk.travelapp.ui.findtrip.MyBookingFragment
 import com.sunasterisk.travelapp.ui.home.HomeFragment
 import com.sunasterisk.travelapp.ui.myreservation.ReservationFragment
 import com.sunasterisk.travelapp.ui.savetrips.SavedTripFragment
@@ -48,11 +48,11 @@ class MainActivity :
                 title = SavedTripFragment.TITLE
                 replaceFragmentInActivity(SavedTripFragment(), R.id.frameMain)
             }
-           R.id.itemReservation -> {
-               toolbar.removeViewAt(0)
-               title = ReservationFragment.TITLE
-               replaceFragmentInActivity(ReservationFragment(), R.id.frameMain)
-           }
+            R.id.itemReservation -> {
+                toolbar.removeViewAt(0)
+                title = ReservationFragment.TITLE
+                replaceFragmentInActivity(ReservationFragment(), R.id.frameMain)
+            }
             R.id.itemBooking -> {
                 toolbar.removeViewAt(0)
                 title = MyBookingFragment.TITLE

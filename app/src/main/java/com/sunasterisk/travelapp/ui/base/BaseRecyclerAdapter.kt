@@ -18,6 +18,7 @@ abstract class BaseRecyclerAdapter<T, V : BaseViewHolder<T>> : RecyclerView.Adap
         if (position in 0 until itemCount) items[position] else null
 
     open fun updateData(newItems: List<T>) {
+        println(newItems)
         items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()

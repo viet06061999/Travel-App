@@ -5,7 +5,7 @@ import android.database.Cursor
 
 data class HotelBooking(
     var id: Int = -1,
-    val hotel: Hotel,
+    var hotel: Hotel,
     val email: String,
     val phone: String,
     val name: String,

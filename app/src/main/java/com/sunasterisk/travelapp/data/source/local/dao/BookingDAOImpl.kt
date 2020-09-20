@@ -8,8 +8,7 @@ class BookingDAOImpl private constructor(databaseHelper: DatabaseHelper) : Booki
 
     override fun insertBooking(booking: HotelBooking): Boolean {
         if (isExist(booking)) {
-
-            return false
+           return updateBooking(booking)
         }
         return database.insert(HotelBooking.TABLE_NAME, null, booking.getValues()) > 0
     }
