@@ -1,5 +1,7 @@
 package com.sunasterisk.travelapp.ui.savetrips
 
+import android.os.Bundle
+import android.view.View
 import com.sunasterisk.travelapp.R
 import com.sunasterisk.travelapp.data.models.Location
 import com.sunasterisk.travelapp.data.models.Restaurant
@@ -25,6 +27,11 @@ class SavedTripFragment :
 
     private val adapter = RestaurantTabAdapter { onItemClick(it) }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.getLocations()
+    }
+
     override fun updateLocations(locations: List<Location>) {
         adapter.updateData(locations)
     }
@@ -35,7 +42,6 @@ class SavedTripFragment :
 
     override fun initComponents() {
         recyclerViewLocation.adapter = adapter
-        presenter.getLocations()
     }
 
     private fun onItemClick(location: Location) {

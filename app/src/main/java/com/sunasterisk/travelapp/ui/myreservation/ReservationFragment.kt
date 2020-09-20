@@ -1,5 +1,7 @@
 package com.sunasterisk.travelapp.ui.myreservation
 
+import android.os.Bundle
+import android.view.View
 import com.sunasterisk.travelapp.R
 import com.sunasterisk.travelapp.data.models.Reservation
 import com.sunasterisk.travelapp.di.Injector
@@ -19,6 +21,16 @@ class ReservationFragment :
             Injector.getRestaurantRepository(requireContext()),
             Injector.getReservationRepository(requireContext())
         )
+    }
+
+    override fun initComponents() {
+        showProgressDialog()
+        recyclerViewReservation.adapter = adapter
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.getReservations()
     }
 
     override fun editItem(itemData: Reservation) {
@@ -43,11 +55,6 @@ class ReservationFragment :
         adapter.removeItem(item)
     }
 
-    override fun initComponents() {
-        showProgressDialog()
-        recyclerViewReservation.adapter = adapter
-        presenter.getReservations()
-    }
     private val adapter = ReservationListAdapter(
         this
     )

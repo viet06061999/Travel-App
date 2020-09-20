@@ -81,4 +81,5 @@
     <string name="title_check_out_date">Check-out date: %s </string>
     <string name="title_number_adult">Adult: %d</string>
     <string name="title_number_children">Children: %d</string>
+    <string name="title_empty_view">No data to show</string>
 </resources>

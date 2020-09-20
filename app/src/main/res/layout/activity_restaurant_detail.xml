@@ -44,10 +44,10 @@
         android:id="@+id/nestedScrollViewDetailRestaurant"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
         android:descendantFocusability="blocksDescendants"
-        android:focusableInTouchMode="true"
+        android:fillViewport="true"
         android:fitsSystemWindows="false"
+        android:focusableInTouchMode="true"
         android:paddingTop="@dimen/dp_8"
         android:paddingBottom="@dimen/dp_8"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -58,10 +58,12 @@
 
             <TextView
                 android:id="@+id/textViewRestaurantName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dp_8"
+                android:gravity="start"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewSave"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,9 +72,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dp_8"
+                android:background="?attr/selectableItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_saved_trip"
-                android:background="?attr/selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textViewRestaurantName" />
 
@@ -344,7 +346,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-       android:id="@+id/fabReservation"
+        android:id="@+id/fabReservation"
         style="@style/Widget.TravelApp.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,5 +1,6 @@
 package com.sunasterisk.travelapp.ui.base
 
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseRecyclerAdapter<T, V : BaseViewHolder<T>> : RecyclerView.Adapter<V>() {
@@ -14,6 +15,14 @@ abstract class BaseRecyclerAdapter<T, V : BaseViewHolder<T>> : RecyclerView.Adap
         }
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return if (!items.isNullOrEmpty()) {
+            VIEW_TYPE_NORMAL
+        } else {
+            VIEW_TYPE_EMPTY
+        }
+    }
+
     private fun getItem(position: Int): T? =
         if (position in 0 until itemCount) items[position] else null
 
@@ -22,5 +31,10 @@ abstract class BaseRecyclerAdapter<T, V : BaseViewHolder<T>> : RecyclerView.Adap
         items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()
+    }
+
+    companion object {
+        const val VIEW_TYPE_EMPTY = 0
+        const val VIEW_TYPE_NORMAL = 1
     }
 }

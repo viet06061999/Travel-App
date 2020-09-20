@@ -44,17 +44,17 @@ class MainActivity :
                 startActivity(getIntent(this))
             }
             R.id.itemSaveTrip -> {
-                toolbar.removeViewAt(0)
+                toolbar.removeView(tabsHome)
                 title = SavedTripFragment.TITLE
                 replaceFragmentInActivity(SavedTripFragment(), R.id.frameMain)
             }
             R.id.itemReservation -> {
-                toolbar.removeViewAt(0)
+                toolbar.removeView(tabsHome)
                 title = ReservationFragment.TITLE
                 replaceFragmentInActivity(ReservationFragment(), R.id.frameMain)
             }
             R.id.itemBooking -> {
-                toolbar.removeViewAt(0)
+                toolbar.removeView(tabsHome)
                 title = MyBookingFragment.TITLE
                 replaceFragmentInActivity(MyBookingFragment(), R.id.frameMain)
             }

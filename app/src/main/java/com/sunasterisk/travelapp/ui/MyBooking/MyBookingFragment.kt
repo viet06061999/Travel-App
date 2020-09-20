@@ -1,5 +1,7 @@
 package com.sunasterisk.travelapp.ui.MyBooking
 
+import android.os.Bundle
+import android.view.View
 import com.sunasterisk.travelapp.R
 import com.sunasterisk.travelapp.data.models.HotelBooking
 import com.sunasterisk.travelapp.data.models.Reservation
@@ -22,6 +24,11 @@ class MyBookingFragment :
             Injector.getHotelRepository(requireContext()),
             Injector.getBookingRepository(requireContext())
         )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.getBookings()
     }
 
     private val adapter = BookingListAdapter(
@@ -47,7 +54,6 @@ class MyBookingFragment :
     override fun initComponents() {
         showProgressDialog()
         recyclerViewBooking.adapter = adapter
-        presenter.getBookings()
     }
 
     companion object {
