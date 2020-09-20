@@ -15,19 +15,25 @@ class ReservationPresenter(
     override fun getReservations() {
         reservationRepository.getReservations(object : OnDataCallback<List<Reservation>> {
             override fun onSuccess(data: List<Reservation>) {
-                for (index in data.indices) {
-                    restaurantRepository.getDetailRestaurant(data[index].restaurant.id,
-                        object : OnDataCallback<Restaurant> {
-                            override fun onSuccess(restaurant: Restaurant) {
-                                data[index].restaurant = restaurant
-                                if (index == data.size - 1) view?.updateReservations(data)
-                            }
+                if(data.size>0){
+                    for (index in data.indices) {
+                        restaurantRepository.getDetailRestaurant(data[index].restaurant.id,
+                            object : OnDataCallback<Restaurant> {
+                                override fun onSuccess(restaurant: Restaurant) {
+                                    data[index].restaurant = restaurant
+                                    if (index == data.size - 1) view?.updateReservations(data)
+                                }
 
-                            override fun onError(throwable: Throwable) {
-                                view?.onError(ERROR)
-                                view?.dismissProgressDialog()
-                            }
-                        })
+                                override fun onError(throwable: Throwable) {
+                                    view?.onError(ERROR)
+                                    view?.dismissProgressDialog()
+                                }
+                            })
+                    }
+                }
+               else{
+                    view?.onError(ERROR)
+                    view?.dismissProgressDialog()
                 }
             }
 
