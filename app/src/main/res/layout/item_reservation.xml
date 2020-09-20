@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_16"
+    android:layout_marginBottom="@dimen/dp_16">
+
+    <ImageView
+        android:id="@+id/imageRestaurantItem"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_64"
+        android:layout_marginTop="@dimen/dp_16"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_destination"
+        app:layout_constraintDimensionRatio="h,2:3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantNameItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        android:textSize="@dimen/sp_20"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageRestaurantItem"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPriceRestaurant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:gravity="center"
+        android:text="$5 - $30"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        app:layout_constraintEnd_toEndOf="@+id/imageRestaurantItem"
+        app:layout_constraintStart_toStartOf="@+id/imageRestaurantItem"
+        app:layout_constraintTop_toBottomOf="@+id/imageRestaurantItem" />
+    
+    <TextView
+        android:id="@+id/textViewRatingCountItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:text="4.5"
+        android:drawableStart="@drawable/ic_star"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRestaurantNameItem"
+        app:layout_constraintStart_toEndOf="@+id/imageRestaurantItem" />
+
+    <TextView
+        android:id="@+id/textViewAddressRestaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        app:layout_constraintStart_toStartOf="@+id/textViewRestaurantNameItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRatingCountItem" />
+
+    <TextView
+        android:id="@+id/textViewSeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="@string/title_seat"
+        app:layout_constraintStart_toStartOf="@+id/textViewRestaurantNameItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddressRestaurant" />
+
+
+    <TextView
+        android:id="@+id/textViewArrival"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="@string/title_arrival_date"
+        app:layout_constraintStart_toStartOf="@+id/textViewRestaurantNameItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSeat" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonApply"
+        style="@style/Widget.TravelApp.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/title_button_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonCancel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewArrival" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/title_button_cancel"
+        app:layout_constraintEnd_toStartOf="@+id/buttonApply"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewArrival" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
