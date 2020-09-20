@@ -26,7 +26,7 @@ class HotelLocalDatasource private constructor(
             descriptionLocation = hotel.descriptionHotel
         )
         LoadDataAsync<Unit, Boolean>(callback) {
-            locationDAO.insertLocationFavourite(location, preference.getCurrentUser())
+            locationDAO.insertLocationFavourite(location)
         }.execute(Unit)
     }
 

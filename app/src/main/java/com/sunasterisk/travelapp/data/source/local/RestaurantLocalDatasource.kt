@@ -27,8 +27,8 @@ class RestaurantLocalDatasource private constructor(
             descriptionLocation = restaurant.descriptionRestaurant
         )
         LoadDataAsync<Location, Boolean>(callback) {
-            locationDAO.insertLocationFavourite(location, preference.getCurrentUser())
-        }
+            locationDAO.insertLocationFavourite(it)
+        }.execute(location)
     }
 
     override fun getDefaultParams(): MutableMap<String, String> {

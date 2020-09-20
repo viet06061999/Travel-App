@@ -61,9 +61,7 @@ class RestaurantRepositoryImpl private constructor(
         remote.getDetailRestaurant(parameters, object : OnDataCallback<String> {
             override fun onSuccess(data: String) {
                 try {
-                    val jsonObject = JSONObject(data)
-                    val jsonArray = jsonObject.getJSONArray(DATA)
-                    val restaurant = Restaurant(jsonArray.getJSONObject(0))
+                    val restaurant = Restaurant(JSONObject(data))
                     callback.onSuccess(restaurant)
                 } catch (exception: JSONException) {
                     callback.onError(exception)

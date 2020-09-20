@@ -1,6 +1,5 @@
 package com.sunasterisk.travelapp.ui.home.restaurant
 
-import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
@@ -16,6 +15,7 @@ import com.sunasterisk.travelapp.ui.base.BaseMVPFragment
 import com.sunasterisk.travelapp.ui.list.restaurant.RestaurantListActivity
 import com.sunasterisk.travelapp.utils.location
 import com.sunasterisk.travelapp.utils.screenHeight
+import kotlinx.android.synthetic.main.fragment_hotel_tab.*
 import kotlinx.android.synthetic.main.fragment_hotel_tab.layoutTabFront
 import kotlinx.android.synthetic.main.fragment_restaurant_tab.*
 import kotlinx.android.synthetic.main.include_hotel_tab_front.*
@@ -133,12 +133,14 @@ class RestaurantTabFragment :
 
     private fun configureFrontLayout() {
         val screenHeight = context?.screenHeight()
-        cardViewLocation.viewTreeObserver.addOnGlobalLayoutListener {
-            screenHeight?.let {
-                BottomSheetBehavior.from(layoutTabFront).peekHeight =
-                    (it - cardViewLocation.location().y - cardViewLocation.height - resources.getDimension(
-                        R.dimen.dp_16
-                    )).toInt()
+        cardViewFilterLocation?.viewTreeObserver?.addOnGlobalLayoutListener {
+            layoutTabFront?.apply {
+                screenHeight?.let {
+                    BottomSheetBehavior.from(this)?.peekHeight =
+                        (it - cardViewFilterLocation.location().y - cardViewFilterLocation.height - resources.getDimension(
+                            R.dimen.dp_16
+                        )).toInt()
+                }
             }
         }
     }
@@ -157,6 +159,5 @@ class RestaurantTabFragment :
 
         const val TITLE = "Eat"
 
-        fun newInstance() = RestaurantTabFragment()
     }
 }

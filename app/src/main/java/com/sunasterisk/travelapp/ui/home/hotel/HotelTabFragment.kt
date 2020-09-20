@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_hotel_tab.*
 import kotlinx.android.synthetic.main.include_hotel_tab_front.*
 import java.util.*
 
-class HotelTabFragment private constructor() : BaseFragment(), View.OnClickListener {
+class HotelTabFragment : BaseFragment(), View.OnClickListener {
 
     override val layoutResource get() = R.layout.fragment_hotel_tab
 
@@ -27,6 +27,21 @@ class HotelTabFragment private constructor() : BaseFragment(), View.OnClickListe
         configureFrontLayout()
         initViews()
         initDestinationList()
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.textViewFilterDates -> setupDatePickerBuilder()
+            R.id.textViewFilterTravelers -> {
+                val dialog = TravelersPickDialogFragment()
+                fragmentManager?.let { manager ->
+                    dialog.show(
+                        manager,
+                        TravelersPickDialogFragment::class.simpleName
+                    )
+                }
+            }
+        }
     }
 
     private fun initDestinationList() {
@@ -54,12 +69,14 @@ class HotelTabFragment private constructor() : BaseFragment(), View.OnClickListe
 
     private fun configureFrontLayout() {
         val screenHeight = context?.screenHeight()
-        cardViewFilterLocation.viewTreeObserver.addOnGlobalLayoutListener {
-            screenHeight?.let {
-                BottomSheetBehavior.from(layoutTabFront).peekHeight =
-                    (it - cardViewFilterLocation.location().y - cardViewFilterLocation.height - resources.getDimension(
-                        R.dimen.dp_16
-                    )).toInt()
+        cardViewFilterLocation?.viewTreeObserver?.addOnGlobalLayoutListener {
+            layoutTabFront?.apply {
+                screenHeight?.let {
+                    BottomSheetBehavior.from(this)?.peekHeight =
+                        (it - cardViewFilterLocation.location().y - cardViewFilterLocation.height - resources.getDimension(
+                            R.dimen.dp_16
+                        )).toInt()
+                }
             }
         }
     }
@@ -77,7 +94,6 @@ class HotelTabFragment private constructor() : BaseFragment(), View.OnClickListe
         const val EXTRA_DATE_RANGE_TAB = "EXTRA_DATE_RANGE_TAB"
         const val EXTRA_LOCATION_TAB = "EXTRA_LOCATION_TAB"
 
-        fun newInstance() = HotelTabFragment()
         fun getTabNameIntent(context: Context, location: Location) =
             Intent(context, HotelListActivity::class.java).apply {
                 putExtra(
@@ -85,25 +101,12 @@ class HotelTabFragment private constructor() : BaseFragment(), View.OnClickListe
                     context.resources.getQuantityString(
                         R.plurals.title_filter_travelers,
                         context.resources.getInteger(R.integer.integer_1),
-                        DestinationFilter.adultCount, DestinationFilter.childrenCount))
+                        DestinationFilter.adultCount, DestinationFilter.childrenCount
+                    )
+                )
                 putExtra(EXTRA_DATE_RANGE_TAB, DestinationFilter.dateRange)
                 putExtra(EXTRA_LOCATION_TAB, location.name)
             }
 
-    }
-
-    override fun onClick(view: View?) {
-        when (view?.id) {
-            R.id.textViewFilterDates -> setupDatePickerBuilder()
-            R.id.textViewFilterTravelers -> {
-                val dialog = TravelersPickDialogFragment()
-                fragmentManager?.let { manager ->
-                    dialog.show(
-                        manager,
-                        TravelersPickDialogFragment::class.simpleName
-                    )
-                }
-            }
-        }
     }
 }

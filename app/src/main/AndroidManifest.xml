@@ -16,6 +16,7 @@
         <activity android:name=".ui.detail.HotelDetailActivity" />
         <activity android:name=".ui.checkin.CheckInActivity" />
         <activity android:name=".ui.detail.restaurant.RestaurantDetailActivity"/>
+        <activity android:name=".ui.reservation.ReservationActivity"/>
         <activity
             android:name=".ui.main.MainActivity"
             android:windowSoftInputMode="adjustPan">

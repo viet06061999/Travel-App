@@ -59,10 +59,9 @@ data class Location(
         propertiesNumber = cursor.getInt(cursor.getColumnIndex(PROPERTIES_NUMBER))
     )
 
-    fun getValue(user: User): ContentValues =
+    fun getValue(): ContentValues =
         ContentValues().apply {
             put(ID, id)
-            put(User.ID, user.id)
             put(TYPE, type)
             put(LOCATION_NAME, name)
             put(LOCATION, location)

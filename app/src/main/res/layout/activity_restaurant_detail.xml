@@ -1,6 +1,355 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.HotelDetailActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:contentScrim="@android:color/white"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="true">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPagerRestaurantThumb"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_240"
+                android:background="@color/color_primary"
+                android:fitsSystemWindows="true"
+                android:overScrollMode="never" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarDetailRestaurant"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/ic_back"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollViewDetailRestaurant"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:descendantFocusability="blocksDescendants"
+        android:focusableInTouchMode="true"
+        android:fitsSystemWindows="false"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_8"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewRestaurantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/imageViewSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_saved_trip"
+                android:background="?attr/selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewRestaurantName" />
+
+            <TextView
+                android:id="@+id/textViewAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_4"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:drawableStartCompat="@drawable/ic_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRestaurantName" />
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_4"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:drawableStartCompat="@drawable/ic_email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+
+            <TextView
+                android:id="@+id/textViewPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_4"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:drawableStartCompat="@drawable/ic_phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+
+            <TextView
+                android:id="@+id/textViewPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_4"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"
+                android:typeface="serif"
+                app:drawableStartCompat="@drawable/ic_price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPhone" />
+
+            <View
+                android:id="@+id/viewDividerDetail"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_1"
+                android:layout_margin="@dimen/dp_8"
+                android:background="@color/color_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewPrice" />
+
+            <TextView
+                android:id="@+id/textViewTitleDetail"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:text="@string/title_detail"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewDividerDetail" />
+
+            <TextView
+                android:id="@+id/textViewDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginVertical="@dimen/dp_8"
+                android:lineSpacingMultiplier="1.2"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitleDetail" />
+
+            <View
+                android:id="@+id/viewDividerRating"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_1"
+                android:layout_margin="@dimen/dp_8"
+                android:background="@color/color_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewDetail" />
+
+            <TextView
+                android:id="@+id/textViewTitleRating"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewDividerRating" />
+
+            <RatingBar
+                android:id="@+id/ratingBarFive"
+                style="@android:style/Widget.Holo.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginVertical="@dimen/dp_8"
+                android:isIndicator="true"
+                android:progressTint="@color/color_accent"
+                android:rating="@integer/integer_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitleRating" />
+
+            <RatingBar
+                android:id="@+id/ratingBarFour"
+                style="@android:style/Widget.Holo.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginVertical="@dimen/dp_8"
+                android:isIndicator="true"
+                android:progressTint="@color/color_accent"
+                android:rating="@integer/integer_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBarFive" />
+
+            <RatingBar
+                android:id="@+id/ratingBarThree"
+                style="@android:style/Widget.Holo.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginVertical="@dimen/dp_8"
+                android:isIndicator="true"
+                android:progressTint="@color/color_accent"
+                android:rating="@integer/integer_3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBarFour" />
+
+            <RatingBar
+                android:id="@+id/ratingBarTwo"
+                style="@android:style/Widget.Holo.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginVertical="@dimen/dp_8"
+                android:isIndicator="true"
+                android:progressTint="@color/color_accent"
+                android:rating="@integer/integer_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBarThree" />
+
+            <RatingBar
+                android:id="@+id/ratingBarOne"
+                style="@android:style/Widget.Holo.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginVertical="@dimen/dp_8"
+                android:isIndicator="true"
+                android:progressTint="@color/color_accent"
+                android:rating="@integer/integer_1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBarTwo" />
+
+            <TextView
+                android:id="@+id/textViewFiveStar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/dp_8"
+                android:gravity="start"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingBarFive"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ratingBarFive"
+                app:layout_constraintTop_toTopOf="@+id/ratingBarFive" />
+
+            <TextView
+                android:id="@+id/textViewFourStar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/dp_8"
+                android:gravity="start"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingBarFour"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ratingBarFour"
+                app:layout_constraintTop_toTopOf="@+id/ratingBarFour" />
+
+            <TextView
+                android:id="@+id/textViewThreeStar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/dp_8"
+                android:gravity="start"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingBarThree"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ratingBarThree"
+                app:layout_constraintTop_toTopOf="@+id/ratingBarThree" />
+
+            <TextView
+                android:id="@+id/textViewTwoStar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/dp_8"
+                android:gravity="start"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingBarTwo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ratingBarTwo"
+                app:layout_constraintTop_toTopOf="@+id/ratingBarTwo" />
+
+            <TextView
+                android:id="@+id/textViewOneStar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/dp_8"
+                android:gravity="start"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingBarOne"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ratingBarOne"
+                app:layout_constraintTop_toTopOf="@+id/ratingBarOne" />
+
+            <View
+                android:id="@+id/viewDividerReview"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_1"
+                android:layout_margin="@dimen/dp_8"
+                android:background="@color/color_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ratingBarOne" />
+
+            <TextView
+                android:id="@+id/textViewTitleReview"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:text="@string/title_number_review"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewDividerReview" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewReview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginVertical="@dimen/dp_8"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitleReview" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+       android:id="@+id/fabReservation"
+        style="@style/Widget.TravelApp.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/dp_8"
+        android:src="@drawable/ic_book"
+        app:tint="@color/color_primary" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

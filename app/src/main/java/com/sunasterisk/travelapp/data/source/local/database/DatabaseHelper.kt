@@ -36,7 +36,6 @@ class DatabaseHelper private constructor(context: Context, dbName: String, versi
         private const val SQLITE_CREATE_TABLE_LOCATION =
             "CREATE TABLE " + Location.TABLE_NAME + " (" + Location.ID +
                     " TEXT PRIMARY KEY " + COMA_SEP +
-                    User.ID + " INTEGER" + COMA_SEP +
                     Location.TYPE + " TEXT" + COMA_SEP +
                     Location.LOCATION_NAME + " TEXT" + COMA_SEP +
                     Location.LOCATION + " TEXT" + COMA_SEP +

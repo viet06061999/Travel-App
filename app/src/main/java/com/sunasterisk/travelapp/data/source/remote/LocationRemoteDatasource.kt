@@ -6,7 +6,6 @@ import com.sunasterisk.travelapp.data.OnDataCallback
 import com.sunasterisk.travelapp.data.source.LocationDatasource
 import com.sunasterisk.travelapp.data.source.remote.utils.HttpUtils
 import com.sunasterisk.travelapp.utils.ApiEndpoint.BASE_URL
-import com.sunasterisk.travelapp.utils.ApiEndpoint.LIST
 import com.sunasterisk.travelapp.utils.ApiEndpoint.SCHEMA
 
 class LocationRemoteDatasource private constructor() : LocationDatasource.Remote {
@@ -23,7 +22,7 @@ class LocationRemoteDatasource private constructor() : LocationDatasource.Remote
             uri.appendQueryParameter(it.key, it.value)
         }
         val url = uri.build().toString()
-        LoadDataAsync<String, String>(callback){
+        LoadDataAsync<String, String>(callback) {
             HttpUtils.getApi(it)
         }.execute(url)
     }
@@ -38,7 +37,7 @@ class LocationRemoteDatasource private constructor() : LocationDatasource.Remote
             uri.appendQueryParameter(it.key, it.value)
         }
         val url = uri.build().toString()
-        LoadDataAsync<String, String>(callback){
+        LoadDataAsync<String, String>(callback) {
             HttpUtils.getApi(it)
         }.execute(url)
     }
@@ -47,6 +46,7 @@ class LocationRemoteDatasource private constructor() : LocationDatasource.Remote
         private const val LOCATIONS = "locations"
         private const val SEARCH = "search"
         private const val PHOTOS = "photos"
+        private const val LIST = "list"
 
         @Volatile
         private var INSTANCE: LocationRemoteDatasource? = null

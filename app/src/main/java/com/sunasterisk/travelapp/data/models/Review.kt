@@ -1,22 +1,25 @@
 package com.sunasterisk.travelapp.data.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import kotlin.jvm.Throws
 
+@Parcelize
 data class Review(
     val author: String,
     var title: String,
-    var rating: Double,
+    var rating: Float,
     var publishDate: String,
     var summary: String
-) {
+): Parcelable {
     @Throws(JSONException::class)
     constructor(jsonObject: JSONObject) : this(
         jsonObject.getString(AUTHOR),
         jsonObject.getString(TITLE),
-        jsonObject.getString(RATING_COUNT).toDouble(),
+        jsonObject.getString(RATING_COUNT).toFloat(),
         jsonObject.getString(PUBLISH_DATE),
         jsonObject.getString(SUMMARY)
     )

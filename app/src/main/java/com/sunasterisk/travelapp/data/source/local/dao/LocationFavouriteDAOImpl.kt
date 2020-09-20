@@ -8,21 +8,21 @@ class LocationFavouriteDAOImpl private constructor(databaseHelper: DatabaseHelpe
     LocationFavouriteDAO {
     private val database = databaseHelper.writableDatabase
 
-    override fun insertLocationFavourite(location: Location, user: User): Boolean {
-        if (isExist(location, user)) return false
+    override fun insertLocationFavourite(location: Location): Boolean {
+        if (isExist(location)) return false
         return database.insert(
             Location.TABLE_NAME,
             null,
-            location.getValue(user)
+            location.getValue()
         ) > 0
     }
 
-    override fun getAllLocationsFavourite(user: User): List<Location> {
+    override fun getAllLocationsFavourite(): List<Location> {
         val cursor = database.query(
             Location.TABLE_NAME,
             null,
-            "${User.ID} = ?",
-            arrayOf(user.id.toString()),
+            null,
+            null,
             null,
             null,
             null
@@ -38,19 +38,19 @@ class LocationFavouriteDAOImpl private constructor(databaseHelper: DatabaseHelpe
         return locations
     }
 
-    override fun deleteLocationFavourite(location: Location, user: User): Boolean =
+    override fun deleteLocationFavourite(location: Location): Boolean =
         database.delete(
             Location.TABLE_NAME,
-            "${Location.ID} = ? and ${User.ID} = ?",
-            arrayOf(location.id, user.id.toString())
+            "${Location.ID} = ?",
+            arrayOf(location.id)
         ) > 0
 
-    private fun isExist(location: Location, user: User): Boolean {
+    private fun isExist(location: Location): Boolean {
         val cursor = database.query(
             Location.TABLE_NAME,
             null,
-            "${Location.ID} = ? and ${User.ID} = ?",
-            arrayOf(location.id, user.id.toString()),
+            "${Location.ID} = ?",
+            arrayOf(location.id),
             null,
             null,
             null

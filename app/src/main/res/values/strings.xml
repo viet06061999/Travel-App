@@ -6,10 +6,9 @@
     <string name="title_saved_trips_menu_item">Saved Trips</string>
     <string name="title_reservation_menu_item">Reservation</string>
     <string name="title_settings_menu_item">Settings</string>
-    <string name="title_my_trips_menu_item">My Trips</string>
+    <string name="title_my_trips_menu_item">My Booking</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="name_avatar">My Name</string>
     <string name="email_avatar">myemail@gmail.com</string>
     <string name="title_travelers">Travelers</string>
     <string name="title_select_dates">Select dates</string>
@@ -17,7 +16,6 @@
     <string name="title_meal_type">Select meal</string>
     <string name="title_restaurant_type">Select restaurant</string>
     <string name="title_destination_front_layout">Explore properties by destination</string>
-    <string name="title_traveler_front_layout">Traveler Information</string>
     <string name="title_destination">Aspen, United States</string>
     <string name="title_detail">Detail</string>
     <plurals name="title_properties">
@@ -32,13 +30,12 @@
     <string name="title_type">Apartment</string>
     <string name="title_adults">Adults</string>
     <string name="title_children">Children</string>
-    <string name="title_count_number">3</string>
     <string name="title_button_apply">Apply</string>
+    <string name="title_button_edit">Edit</string>
     <string name="title_button_cancel">Cancel</string>
     <string name="title_transition_type_y">translationY</string>
     <string name="title_cost">54$</string>
     <string name="title_restaurant_address">Restaurant in %s</string>
-    <string name="title_hotel_address">Hotel in %s</string>
     <string name="title_location_address">Location in %s</string>
     <string name="title_cost_restaurant">54$-60$</string>
     <string name="title_price">Price</string>
@@ -65,4 +62,19 @@
     <string name="msg_check_in">Check In</string>
     <string name="title_step">1/3</string>
     <string name="title_view_pager_field">mScroller</string>
+    <string name="title_hotel_address">Hotel in %s</string>
+    <string name="title_count_number">3</string>
+    <string name="title_traveler_front_layout">Traveler Information</string>
+    <string name="name_avatar">My Name</string>
+    <string name="title_properties_location">%d available properties</string>
+    <string name="title_number_rating">%d ratings</string>
+    <string name="title_number_review">%d reviews</string>
+    <string name="title_reservation">Reservation</string>
+    <string name="title_arrival">Arrival Date</string>
+    <string name="title_save">Save</string>
+    <string name="title_number_person">Number of people</string>
+    <string name="title_information_reservation">Fill information to reservation</string>
+    <string name="title_seat">Seat: %d</string>
+    <string name="title_arrival_date">Arrival: %s</string>
+    <string name="title_favorite_location">My favourite location</string>
 </resources>

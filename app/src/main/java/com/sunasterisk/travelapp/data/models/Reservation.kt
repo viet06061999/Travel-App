@@ -2,23 +2,26 @@ package com.sunasterisk.travelapp.data.models
 
 import android.content.ContentValues
 import android.database.Cursor
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Reservation(
     val id: Int = -1,
-    val restaurant: Restaurant,
+    var restaurant: Restaurant,
     val email: String,
     val phone: String,
     val name: String,
     var arrivalTime: String,
     var numAdult: Int,
     var numChildren: Int
-) {
+) : Parcelable {
     constructor(cursor: Cursor) : this(
         cursor.getInt(cursor.getColumnIndex(ID)),
         Restaurant(id = cursor.getString(cursor.getColumnIndex(RESTAURANT_ID))),
-        cursor.getString(cursor.getColumnIndex(User.NAME)),
         cursor.getString(cursor.getColumnIndex(User.EMAIL)),
         cursor.getString(cursor.getColumnIndex(User.PHONE)),
+        cursor.getString(cursor.getColumnIndex(User.NAME)),
         cursor.getString(cursor.getColumnIndex(ARRIVAL_TIME)),
         cursor.getInt(cursor.getColumnIndex(NUM_ADULT)),
         cursor.getInt(cursor.getColumnIndex(NUM_CHILDREN))

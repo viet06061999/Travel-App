@@ -6,6 +6,9 @@ import com.sunasterisk.travelapp.data.source.LocationDatasource
 import com.sunasterisk.travelapp.utils.ApiEndpoint.LOCATION_ID
 import com.sunasterisk.travelapp.utils.ApiEndpoint.QUERY
 import com.sunasterisk.travelapp.utils.KeyResponse.DATA
+import com.sunasterisk.travelapp.utils.KeyResponse.IMAGES
+import com.sunasterisk.travelapp.utils.KeyResponse.LARGE_IMAGE
+import com.sunasterisk.travelapp.utils.KeyResponse.URL_IMAGE
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -48,7 +51,13 @@ class LocationRepositoryImpl private constructor(
                     val jsonArray = jsonObject.getJSONArray(DATA)
                     val listPhotos = mutableListOf<String>()
                     for (index in 0 until jsonArray.length()) {
-                        listPhotos.add(jsonArray.getString(index))
+                        listPhotos.add(
+                            jsonArray
+                                .getJSONObject(index)
+                                .getJSONObject(IMAGES)
+                                .getJSONObject(LARGE_IMAGE)
+                                .getString(URL_IMAGE)
+                        )
                     }
                     callback.onSuccess(listPhotos)
                 } catch (exception: JSONException) {

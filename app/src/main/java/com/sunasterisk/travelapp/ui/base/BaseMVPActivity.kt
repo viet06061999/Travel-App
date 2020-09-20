@@ -3,11 +3,8 @@ package com.sunasterisk.travelapp.ui.base
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import com.google.android.material.snackbar.Snackbar
 import com.sunasterisk.travelapp.R
 import com.sunasterisk.travelapp.utils.createProgressDialog
-import com.sunasterisk.travelapp.utils.showSnackBar
 import com.sunasterisk.travelapp.utils.showToast
 
 abstract class BaseMVPActivity<V : BaseContract.View<T>, T : BaseContract.Presenter<V>> :
@@ -58,9 +55,7 @@ abstract class BaseMVPActivity<V : BaseContract.View<T>, T : BaseContract.Presen
 
     override fun onError(message: String?) {
         val msg = message ?: getString(R.string.error_default_message)
-        if (this is View) {
-            showSnackBar(msg, Snackbar.LENGTH_SHORT)
-        }
+        showToastMessage(msg)
     }
 
     override fun onError(resId: Int) {

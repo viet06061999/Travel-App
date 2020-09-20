@@ -20,4 +20,7 @@ object ApiEndpoint {
 
 object KeyResponse {
     const val DATA = "data"
+    const val LARGE_IMAGE = "large"
+    const val URL_IMAGE = "url"
+    const val IMAGES = "images"
 }

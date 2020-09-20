@@ -27,11 +27,8 @@ class RestaurantTabAdapter(private var onItemClick: (Location) -> Unit) :
         override fun onBindData(itemData: Location) {
             super.onBindData(itemData)
             with(itemView) {
-                val textGeo = resources.getQuantityString(
-                    R.plurals.title_properties,
-                    resources.getInteger(R.integer.integer_1),
-                    itemData.propertiesNumber
-                )
+                val textGeo =
+                    resources.getString(R.string.title_properties_location, itemData.propertiesNumber)
                 val textRestaurant =
                     resources.getString(R.string.title_restaurant_address, itemData.location)
                 val textHotel =

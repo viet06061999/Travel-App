@@ -9,7 +9,10 @@ class ReservationDAOImpl private constructor(database: DatabaseHelper) :
     private val database = database.writableDatabase
 
     override fun insertReservation(reservation: Reservation): Boolean {
-        if (isExists(reservation)) return false
+        if (isExists(reservation)){
+            updateReservation(reservation)
+            return false
+        }
         return database.insert(
             Reservation.TABLE_NAME,
             null,
@@ -40,7 +43,7 @@ class ReservationDAOImpl private constructor(database: DatabaseHelper) :
     override fun updateReservation(reservation: Reservation): Boolean {
         if (!isExists(reservation)) return false
         return database.update(
-            User.TABLE_NAME,
+            Reservation.TABLE_NAME,
             reservation.getValues(),
             "${Reservation.ID} = ?",
             arrayOf(reservation.id.toString())

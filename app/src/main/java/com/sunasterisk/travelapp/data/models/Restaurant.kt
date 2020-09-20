@@ -1,9 +1,12 @@
 package com.sunasterisk.travelapp.data.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
+@Parcelize
 data class Restaurant(
     val id: String,
     val name: String = "",
@@ -18,7 +21,7 @@ data class Restaurant(
     var rating: Rating = Rating(),
     var descriptionRestaurant: String = "",
     var reviews: MutableList<Review> = mutableListOf()
-) {
+): Parcelable {
 
     @Throws(JSONException::class)
     constructor(restaurantObject: JSONObject) : this(

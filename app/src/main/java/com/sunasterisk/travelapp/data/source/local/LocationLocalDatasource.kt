@@ -15,19 +15,19 @@ class LocationLocalDatasource private constructor(
 ) : LocationDatasource.Local {
     override fun insertLocation(location: Location, callback: OnDataCallback<Boolean>) {
         LoadDataAsync<Unit, Boolean>(callback) {
-            locationDAO.insertLocationFavourite(location, preference.getCurrentUser())
+            locationDAO.insertLocationFavourite(location)
         }.execute(Unit)
     }
 
     override fun getAllLocations(callback: OnDataCallback<List<Location>>) {
         LoadDataAsync<Unit, List<Location>>(callback) {
-            locationDAO.getAllLocationsFavourite(preference.getCurrentUser())
+            locationDAO.getAllLocationsFavourite()
         }.execute(Unit)
     }
 
     override fun deleteLocation(location: Location, callback: OnDataCallback<Boolean>) {
         LoadDataAsync<Unit, Boolean>(callback) {
-            locationDAO.deleteLocationFavourite(location, preference.getCurrentUser())
+            locationDAO.deleteLocationFavourite(location)
         }.execute(Unit)
     }
 

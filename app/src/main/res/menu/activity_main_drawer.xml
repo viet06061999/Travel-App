@@ -2,14 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
 
-        <item android:title="@string/title_home_menu_item" />
-        <item android:title="@string/title_find_trips_menu_item" />
-        <item android:title="@string/title_my_trips_menu_item" />
-        <item android:title="@string/title_saved_trips_menu_item" />
-        <item android:title="@string/title_reservation_menu_item" />
+        <item
+            android:id="@+id/itemHome"
+            android:icon="@drawable/ic_home"
+            android:title="@string/title_home_menu_item" />
+        <item
+            android:id="@+id/itemBooking"
+            android:icon="@drawable/ic_book"
+            android:title="@string/title_my_trips_menu_item" />
+        <item
+            android:id="@+id/itemSaveTrip"
+            android:icon="@drawable/ic_saved_trip_nav"
+            android:title="@string/title_saved_trips_menu_item" />
+        <item
+            android:id="@+id/itemReservation"
+            android:icon="@drawable/ic_reservation"
+            android:title="@string/title_reservation_menu_item" />
     </group>
-    <group android:checkableBehavior="single">
 
-        <item android:title="@string/title_settings_menu_item" />
-    </group>
 </menu>

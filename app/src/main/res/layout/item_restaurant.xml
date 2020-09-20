@@ -47,8 +47,6 @@
         android:layout_margin="@dimen/dp_8"
         android:isIndicator="true"
         android:progressTint="@color/color_accent"
-        android:rating="2.5"
-        android:stepSize="0.1"
         app:layout_constraintStart_toEndOf="@+id/imageRestaurantItem"
         app:layout_constraintTop_toBottomOf="@+id/textViewRestaurantNameItem" />
 

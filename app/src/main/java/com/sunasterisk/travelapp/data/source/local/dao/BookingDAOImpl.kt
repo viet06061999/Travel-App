@@ -7,7 +7,10 @@ class BookingDAOImpl private constructor(databaseHelper: DatabaseHelper) : Booki
     private val database = databaseHelper.writableDatabase
 
     override fun insertBooking(booking: HotelBooking): Boolean {
-        if (isExist(booking)) return false
+        if (isExist(booking)) {
+
+            return false
+        }
         return database.insert(HotelBooking.TABLE_NAME, null, booking.getValues()) > 0
     }
 

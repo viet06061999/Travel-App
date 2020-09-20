@@ -18,6 +18,7 @@ import com.sunasterisk.travelapp.ui.list.restaurant.RestaurantListContract.Prese
 import com.sunasterisk.travelapp.ui.list.restaurant.FilterDialogFragment.OnDataChange
 import kotlinx.android.synthetic.main.activity_restaurant_list.*
 import kotlinx.android.synthetic.main.include_restaurant_list_front.*
+import java.util.ArrayList
 
 class RestaurantListActivity :
     BaseMVPActivity<View, Presenter>(),
@@ -25,7 +26,10 @@ class RestaurantListActivity :
     OnDataChange {
 
     override val presenter by lazy {
-        RestaurantListPresenter(Injector.getRestaurantRepository(this))
+        RestaurantListPresenter(
+            Injector.getLocationRepository(this),
+            Injector.getRestaurantRepository(this)
+        )
     }
     override val layoutResource get() = R.layout.activity_restaurant_list
 
@@ -71,6 +75,11 @@ class RestaurantListActivity :
         dismissProgressDialog()
     }
 
+    override fun navigationDetail(restaurant: Restaurant, photos: ArrayList<String>) {
+        val intent = RestaurantDetailActivity.getIntent(this, restaurant, photos)
+        startActivity(intent)
+    }
+
     override fun sendData(sortByPrice: Boolean, maxPrice: Int, minRating: Int) {
         this.sortByPrice = sortByPrice
         this.maxPrice = maxPrice
@@ -110,9 +119,9 @@ class RestaurantListActivity :
     }
 
     private fun onItemClick(item: Restaurant) {
-        val intent = RestaurantDetailActivity.getIntent(this, item)
-        startActivity(intent)
+        presenter.getDetail(item.id)
     }
+
 
     companion object {
 

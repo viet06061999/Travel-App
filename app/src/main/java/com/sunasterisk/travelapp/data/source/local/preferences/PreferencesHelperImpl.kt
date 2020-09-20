@@ -3,7 +3,7 @@ package com.sunasterisk.travelapp.data.source.local.preferences
 import android.content.Context
 import com.sunasterisk.travelapp.data.models.Setting
 import com.sunasterisk.travelapp.data.models.Setting.Companion.DOLAR
-import com.sunasterisk.travelapp.data.models.Setting.Companion.ENGLISH
+import com.sunasterisk.travelapp.data.models.Setting.Companion.VIETNAMESE
 import com.sunasterisk.travelapp.data.models.User
 
 class PreferencesHelperImpl private constructor(context: Context) : PreferencesHelper {
@@ -62,7 +62,7 @@ class PreferencesHelperImpl private constructor(context: Context) : PreferencesH
     override fun getSetting(): Setting {
         preferencesSetting.apply {
             return Setting(
-                getString(PREF_KEY_SETTING_LANGUAGE,ENGLISH) ?: ENGLISH,
+                getString(PREF_KEY_SETTING_LANGUAGE, VIETNAMESE) ?: VIETNAMESE,
                 getString(PREF_KEY_SETTING_CURRENCY,DOLAR) ?: DOLAR
             )
         }

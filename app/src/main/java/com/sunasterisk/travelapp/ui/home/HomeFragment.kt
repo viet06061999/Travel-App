@@ -29,8 +29,8 @@ class HomeFragment : BaseFragment() {
 
     private fun setupAdapter() {
         HomeTabsAdapter(childFragmentManager).apply {
-            addFragment(HotelTabFragment.newInstance(), HotelTabFragment.TITLE)
-            addFragment(RestaurantTabFragment.newInstance(), RestaurantTabFragment.TITLE)
+            addFragment(HotelTabFragment(), HotelTabFragment.TITLE)
+            addFragment(RestaurantTabFragment(), RestaurantTabFragment.TITLE)
             viewpager.adapter = this
         }
     }
@@ -39,7 +39,4 @@ class HomeFragment : BaseFragment() {
         fun onSetup(viewPager: ViewPager)
     }
 
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
 }
